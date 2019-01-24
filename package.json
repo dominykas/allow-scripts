@@ -1,0 +1,21 @@
+{
+  "name": "allow-scripts",
+  "version": "0.0.0",
+  "description": "Execute allowed lifecycle scripts",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "lab -L -n"
+  },
+  "bin": {
+    "allow-scripts": "./bin/allow-scripts.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "libnpm": "^2.0.1",
+    "topo": "^3.0.3"
+  },
+  "devDependencies": {
+    "lab": "^18.0.1"
+  }
+}
