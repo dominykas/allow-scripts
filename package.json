@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "description": "Execute allowed lifecycle scripts",
   "main": "lib/index.js",
+  "repository": {
+    "url": "https://github.com/dominykas/allow-scripts.git"
+  },
   "scripts": {
     "test": "lab -L -n"
   },
   "bin": {
     "allow-scripts": "./bin/allow-scripts.js"
   },
-  "author": "",
+  "author": "Dominykas Blyžė <hello@dominykas.com>",
   "license": "MIT",
   "dependencies": {
     "libnpm": "^2.0.1",
