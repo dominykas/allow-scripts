@@ -21,7 +21,7 @@ Running the command will scan the list of installed dependencies (from the first
 - `prepublish` in the main package
 - `prepare` in the main package
 
-Allowed package list is configurable in `package.json` by adding an `allowedScripts` property, with an object where the key is a package name and the value is one of:
+Allowed package list is configurable in `package.json` by adding an `allowScripts` property, with an object where the key is a package name and the value is one of:
 
 * a string with a semver specifier for allowed versions
   - non-matching versions will be ignored
