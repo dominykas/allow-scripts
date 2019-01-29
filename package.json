@@ -28,6 +28,7 @@
   ],
   "release": {
     "npmPublish": false,
-    "tarballDir": "."
+    "tarballDir": ".",
+    "assets": "allow-scripts-*.tgz"
   }
 }
