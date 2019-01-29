@@ -22,6 +22,10 @@
     "lab": "^18.0.1",
     "semantic-release": "^15.13.3"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "release": {
     "npmPublish": false,
     "tarballDir": "."
