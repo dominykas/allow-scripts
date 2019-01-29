@@ -3,8 +3,8 @@
 In `package.json`:
 ```
   "allowScripts": {
-    "fsevents": "*",
-    "node-sass": "*"
+    "fsevents": "*", # allow install scripts in all versions
+    "node-sass": false # ignore install scripts
   }
 ```
 
