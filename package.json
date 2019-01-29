@@ -1,7 +1,7 @@
 {
   "name": "allow-scripts",
   "version": "0.0.0",
-  "description": "Execute allowed lifecycle scripts",
+  "description": "Execute allowed `npm install` lifecycle scripts",
   "main": "lib/index.js",
   "repository": {
     "url": "https://github.com/dominykas/allow-scripts.git"
@@ -15,12 +15,13 @@
   "author": "Dominykas Blyžė <hello@dominykas.com>",
   "license": "MIT",
   "dependencies": {
-    "libnpm": "^2.0.1",
-    "topo": "^3.0.3"
+    "libnpm": "2.x.x",
+    "semver": "5.x.x",
+    "topo": "3.x.x"
   },
   "devDependencies": {
-    "lab": "^18.0.1",
-    "semantic-release": "^15.13.3"
+    "lab": "18.x.x",
+    "semantic-release": "15.x.x"
   },
   "files": [
     "bin",
