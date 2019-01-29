@@ -23,6 +23,7 @@
     "semantic-release": "^15.13.3"
   },
   "release": {
-    "npmPublish": false
+    "npmPublish": false,
+    "tarballDir": "."
   }
 }
