@@ -4,3 +4,13 @@ node_js:
   - "8"
   - "10"
   - "node"
+
+jobs:
+  include:
+    - stage: release
+      node_js: "10"
+      deploy:
+        provider: "script"
+        skip_cleanup: true
+        script:
+          - "npx semantic-release"

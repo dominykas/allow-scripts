@@ -19,6 +19,10 @@
     "topo": "^3.0.3"
   },
   "devDependencies": {
-    "lab": "^18.0.1"
+    "lab": "^18.0.1",
+    "semantic-release": "^15.13.3"
+  },
+  "release": {
+    "npmPublish": false
   }
 }
