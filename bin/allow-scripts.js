@@ -4,4 +4,8 @@
 
 const Allow = require('..');
 
-Allow.run();
+Allow.run().catch((err) => {
+
+    console.error(err);
+    process.exit(1);
+});
