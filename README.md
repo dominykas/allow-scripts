@@ -3,10 +3,8 @@
 In `package.json`:
 ```
   "allowScripts": {
-    "install": {
-      "fsevents": "*",
-      "node-sass": "*"
-    }
+    "fsevents": "*",
+    "node-sass": "*"
   }
 ```
 
