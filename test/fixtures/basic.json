@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "@example/basic",
+  "version": "0.0.0",
+  "dependencies": {
+    "@example/with-install-script": "*"
+  },
+  "allowScripts": {
+    "@example/with-install-script": "*"
+  }
+}

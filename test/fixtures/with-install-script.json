@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "@example/with-install-script",
+  "version": "0.0.0",
+  "scripts": {
+    "install": "echo install from with-install-script >>${OUTPUT}"
+  }
+}
