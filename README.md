@@ -2,9 +2,16 @@
 
 Execute allowed `npm install` lifecycle scripts. 
 
-## Usage
+## tl;dr
 
-Run your `npm install` with `--ignore-scripts` (or add `ignore-scripts=true` in your `.npmrc`), then:
+- Whitelist packages that you trust in your `package.json`: `"allowScripts": { "packageName": "1.x.x - 2.x.x" }`
+- Run `npm install --ignore-scripts` or `yarn install --ignore-scripts`
+- Run `npx allow-scripts`
+
+Only the explicitly allowed `[pre|post]install` scripts will be executed.
+
+
+## Usage
 
 ```
 $ npx allow-scripts [--dry-run]
@@ -21,6 +28,16 @@ Running the command will scan the list of installed dependencies (from the first
 - `prepublish` in the main package
 - `prepare` in the main package
 
+### Configuration
+
+```
+  "allowScripts": {
+    "fsevents": "*",        # allow install scripts in all versions
+    "node-sass": false,     # ignore install scripts for all versions
+    "webpack-cli": "3.x.x"  # allow all minors for v3, ignore everything else
+  }
+```
+
 Allowed package list is configurable in `package.json` by adding an `allowScripts` property, with an object where the key is a package name and the value is one of:
 
 * a string with a semver specifier for allowed versions
@@ -29,12 +46,3 @@ Allowed package list is configurable in `package.json` by adding an `allowScript
 * `false` - ignore all versions
 
 If a package has a lifecycle script, but is neither allowed nor ignored, `allow-scripts` will exit with an error.
-
-Example for `package.json`:
-```
-  "allowScripts": {
-    "fsevents": "*",        # allow install scripts in all versions
-    "node-sass": false,     # ignore install scripts for all versions
-    "webpack-cli": "3.x.x"  # allow all minors for v3, ignore everything else
-  }
-```
