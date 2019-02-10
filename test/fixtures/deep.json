@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@example/deep",
+  "version": "0.0.0",
+  "dependencies": {
+    "@example/basic": "*"
+  },
+  "allowScripts": {
+    "@example/basic": "*",
+    "@example/with-preinstall-script": "*",
+    "@example/with-install-script": "*",
+    "@example/with-postinstall-script": true
+  }
+}

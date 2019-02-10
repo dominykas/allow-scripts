@@ -22,14 +22,14 @@ exports.setup = (main, deps) => {
     Mkdirp.sync(cwd);
     Fs.copyFileSync(Path.join(__dirname, `${main}.json`), Path.join(cwd, 'package.json'));
     Fs.writeFileSync(Path.join(cwd, 'res.txt'), '');
-    delete require.cache[Path.join(cwd, 'package.json')];
 
     deps.forEach((dep) => {
 
         const pkg = require(`./${dep}.json`);
 
         Mkdirp.sync(Path.join(cwd, 'node_modules', pkg.name));
-        Fs.writeFileSync(Path.join(cwd, 'node_modules', pkg.name, 'package.json'), JSON.stringify(Object.assign({}, pkg, {
+        const pkgJsonPath = Path.join(cwd, 'node_modules', pkg.name, 'package.json');
+        Fs.writeFileSync(pkgJsonPath, JSON.stringify(Object.assign({}, pkg, {
             _id: `${pkg.name}@${pkg.version}`
         })));
     });
@@ -42,10 +42,21 @@ exports.setup = (main, deps) => {
     internals.restore.push(() => {
 
         process.env.OUTPUT = originalOutput;
+        Object.keys(require.cache).forEach((k) => {
+
+            if (k.startsWith(cwd)) {
+                delete require.cache[k];
+            }
+        });
     });
 
     const log = [];
     const appendLog = (...items) => {
+
+        // @todo: should suppress this in production code
+        if (items[0] === 'npm notice created a lockfile as npm-shrinkwrap.json. You should commit this file.\n') {
+            return;
+        }
 
         log.push(items.map((i) => i || '').join(' ').replace(new RegExp(cwd, 'g'), '.'));
     };

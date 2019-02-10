@@ -17,7 +17,7 @@ Only the explicitly allowed `[pre|post]install` scripts will be executed.
 $ npx allow-scripts [--dry-run]
 ```
 
-Running the command will scan the list of installed dependencies using `npm ls --json`. It will then execute the scripts for allowed dependencies that have them in the following order:
+Running the command will scan the list of installed dependencies (using an existing `package-lock.json` or `npm-shrinkwrap.json` or by creating one on the fly). It will then execute the scripts for allowed dependencies that have them in the following order:
 
 - `preinstall` in the main package
 - `preinstall` in dependencies
