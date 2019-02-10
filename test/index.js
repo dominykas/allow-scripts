@@ -70,5 +70,20 @@ describe('allow-scripts', () => {
             expect(fixture.getActualResult()).to.equal('postinstall from with-postinstall-script');
             expect(fixture.getLog()).to.contain('skip node_modules/@example/with-install-script (because it is not allowed in package.json)');
         });
+
+        it('skips scripts which are outside of allowed semver range', async () => {
+
+            const fixture = Fixtures.setup('allowed-semver', [
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts'
+            ]);
+
+            await Allow.run({});
+
+            expect(fixture.getActualResult()).not.to.contain('with-install-script');
+            expect(fixture.getActualResult()).to.equal('postinstall from with-postinstall-script');
+            expect(fixture.getLog()).to.contain('skip node_modules/@example/with-install-script (because 0.0.0 is outside of allowed range: 1.x.x)');
+        });
     });
 });

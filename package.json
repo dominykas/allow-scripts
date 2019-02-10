@@ -7,7 +7,7 @@
     "url": "https://github.com/dominykas/allow-scripts.git"
   },
   "scripts": {
-    "test": "lab -L -t 80 -m 5000"
+    "test": "lab -L -t 83 -m 5000"
   },
   "bin": {
     "allow-scripts": "./bin/allow-scripts.js"
