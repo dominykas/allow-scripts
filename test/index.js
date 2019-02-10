@@ -41,9 +41,24 @@ describe('allow-scripts', () => {
 
             await Allow.run({});
 
-            expect(fixture.getResults()).to.equal(fixture.expectedResult);
+            expect(fixture.getActualResult()).to.equal(fixture.getExpectedResult());
             expect(fixture.getLog()).not.to.contain('without-scripts');
             expect(fixture.getLog()).not.to.contain('without-install-scripts');
+        });
+
+        it('crashes on script not in allowed list', async () => {
+
+            const fixture = Fixtures.setup('not-in-allowed', [
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts'
+            ]);
+
+            await expect(Allow.run({})).to.reject('No entry for @example/with-install-script');
+
+            expect(fixture.getActualResult()).not.to.contain('with-postinstall-script');
+            expect(fixture.getActualResult()).to.equal('');
+            expect(fixture.getLog()).to.equal('');
         });
     });
 });

@@ -20,6 +20,7 @@ exports.setup = (main, deps) => {
     Rimraf.sync(cwd);
     Mkdirp.sync(cwd);
     Fs.copyFileSync(Path.join(__dirname, `${main}.json`), Path.join(cwd, 'package.json'));
+    Fs.writeFileSync(Path.join(cwd, 'res.txt'), '');
     delete require.cache[Path.join(cwd, 'package.json')];
 
     deps.forEach((dep) => {
@@ -43,8 +44,11 @@ exports.setup = (main, deps) => {
     });
 
     return {
-        expectedResult: Fs.readFileSync(Path.join(__dirname, `${main}.txt`)).toString().trim(),
-        getResults: () => {
+        getExpectedResult: () => {
+
+            return Fs.readFileSync(Path.join(__dirname, `${main}.txt`)).toString().trim();
+        },
+        getActualResult: () => {
 
             return Fs.readFileSync(output).toString().trim();
         },
