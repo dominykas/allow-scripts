@@ -45,6 +45,22 @@ describe('allow-scripts', () => {
             expect(fixture.getLog()).not.to.contain('without-install-scripts');
         });
 
+        it('dry run: reports allowed scripts', async () => {
+
+            const fixture = Fixtures.setup('basic', [
+                'with-preinstall-script',
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts',
+                'without-install-scripts'
+            ]);
+
+            await Allow.run({ dryRun: true });
+
+            expect(fixture.getActualResult()).to.equal('');
+            expect(fixture.getLog()).to.equal(Fs.readFileSync(Path.join(__dirname, 'fixtures', 'basic.dry-run.txt')).toString().trim());
+        });
+
         it('crashes on script not in allowed list', async () => {
 
             const fixture = Fixtures.setup('not-in-allowed', [
