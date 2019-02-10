@@ -53,12 +53,9 @@ exports.setup = (main, deps) => {
     Sinon.stub(console, 'info').callsFake(appendLog);
     Sinon.stub(console, 'log').callsFake(appendLog);
     Sinon.stub(console, 'warn').callsFake(appendLog);
+    Sinon.stub(process.stderr, 'write').callsFake((data) => appendLog(data.toString()));
 
     return {
-        getExpectedResult: () => {
-
-            return Fs.readFileSync(Path.join(__dirname, `${main}.txt`)).toString().trim();
-        },
         getActualResult: () => {
 
             return Fs.readFileSync(output).toString().trim();

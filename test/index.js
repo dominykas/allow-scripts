@@ -1,7 +1,10 @@
 'use strict';
 
+const Cp = require('child_process');
+const Fs = require('fs');
 const Fixtures = require('./fixtures');
-
+const Path = require('path');
+const Sinon = require('sinon');
 
 const Allow = require('..');
 
@@ -37,7 +40,7 @@ describe('allow-scripts', () => {
 
             await Allow.run({});
 
-            expect(fixture.getActualResult()).to.equal(fixture.getExpectedResult());
+            expect(fixture.getActualResult()).to.equal(Fs.readFileSync(Path.join(__dirname, 'fixtures', 'basic.full.txt')).toString().trim());
             expect(fixture.getLog()).not.to.contain('without-scripts');
             expect(fixture.getLog()).not.to.contain('without-install-scripts');
         });
@@ -112,6 +115,30 @@ describe('allow-scripts', () => {
 
             expect(fixture.getActualResult()).to.equal('');
             expect(fixture.getLog()).to.equal('');
+        });
+
+        it('deals with incomplete installed tree', async () => {
+
+            const fixture = Fixtures.setup('basic', [
+                // 'with-preinstall-script',
+                'with-install-script',
+                // 'with-postinstall-script',
+                'without-scripts',
+                'without-install-scripts'
+            ]);
+
+            await Allow.run({});
+
+            expect(fixture.getActualResult()).to.equal(Fs.readFileSync(Path.join(__dirname, 'fixtures', 'basic.incomplete.txt')).toString().trim());
+        });
+
+        it('deals with unparseable tree', async () => {
+
+            Sinon.stub(Cp, 'execSync').returns('not-json');
+
+            Fixtures.setup('basic', []);
+
+            await expect(Allow.run({})).to.reject('Failed to read the contents of node_modules. `npm ls --json` returned: not-json');
         });
     });
 });
