@@ -20,13 +20,16 @@ exports.setup = (main, deps) => {
     Rimraf.sync(cwd);
     Mkdirp.sync(cwd);
     Fs.copyFileSync(Path.join(__dirname, `${main}.json`), Path.join(cwd, 'package.json'));
+    delete require.cache[Path.join(cwd, 'package.json')];
 
     deps.forEach((dep) => {
 
         const pkg = require(`./${dep}.json`);
 
         Mkdirp.sync(Path.join(cwd, 'node_modules', pkg.name));
-        Fs.copyFileSync(Path.join(__dirname, `${dep}.json`), Path.join(cwd, 'node_modules', pkg.name, 'package.json'));
+        Fs.writeFileSync(Path.join(cwd, 'node_modules', pkg.name, 'package.json'), JSON.stringify(Object.assign({}, pkg, {
+            _id: `${pkg.name}@${pkg.version}`
+        })));
     });
 
     process.chdir(cwd);
@@ -40,9 +43,15 @@ exports.setup = (main, deps) => {
     });
 
     return {
+        expectedResult: Fs.readFileSync(Path.join(__dirname, `${main}.txt`)).toString().trim(),
         getResults: () => {
 
             return Fs.readFileSync(output).toString().trim();
+        },
+
+        getLog: () => {
+
+            return console.log.args.map((args) => args[0] || '').join('\n').replace(new RegExp(cwd, 'g'), '.').trim();
         }
     };
 };

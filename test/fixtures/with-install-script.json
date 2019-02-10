@@ -3,6 +3,6 @@
   "name": "@example/with-install-script",
   "version": "0.0.0",
   "scripts": {
-    "install": "echo install from with-install-script >>${OUTPUT}"
+    "install": "echo install from with-install-script >> ${OUTPUT}"
   }
 }

@@ -31,11 +31,19 @@ describe('allow-scripts', () => {
 
         it('executes allowed scripts', async () => {
 
-            const { getResults } = Fixtures.setup('basic', ['with-install-script']);
+            const fixture = Fixtures.setup('basic', [
+                'with-preinstall-script',
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts',
+                'without-install-scripts'
+            ]);
 
             await Allow.run({});
 
-            expect(getResults()).to.equal('install from with-install-script');
+            expect(fixture.getResults()).to.equal(fixture.expectedResult);
+            expect(fixture.getLog()).not.to.contain('without-scripts');
+            expect(fixture.getLog()).not.to.contain('without-install-scripts');
         });
     });
 });
