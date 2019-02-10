@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "@example/with-cycles",
+  "version": "0.0.0",
+  "dependencies": {
+    "@example/cycle-a": "*",
+    "@example/cycle-b": "*",
+    "@example/with-install-script": "*"
+  },
+  "allowScripts": {
+    "@example/with-install-script": "*"
+  }
+}

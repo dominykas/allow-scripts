@@ -3,7 +3,8 @@
   "name": "@example/deep",
   "version": "0.0.0",
   "dependencies": {
-    "@example/basic": "*"
+    "@example/basic": "*",
+    "@example/with-preinstall-script": "*"
   },
   "allowScripts": {
     "@example/basic": "*",
