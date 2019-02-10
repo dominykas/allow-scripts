@@ -85,5 +85,33 @@ describe('allow-scripts', () => {
             expect(fixture.getActualResult()).to.equal('postinstall from with-postinstall-script');
             expect(fixture.getLog()).to.contain('skip node_modules/@example/with-install-script (because 0.0.0 is outside of allowed range: 1.x.x)');
         });
+
+        it('crashes on invalid semver range', async () => {
+
+            const fixture = Fixtures.setup('invalid-semver', [
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts'
+            ]);
+
+            await expect(Allow.run({})).to.reject('Invalid version range in allowScripts[@example/with-install-script]: not-a-semver-range');
+
+            expect(fixture.getActualResult()).to.equal('');
+            expect(fixture.getLog()).to.equal('');
+        });
+
+        it('crashes on missing allowScripts section', async () => {
+
+            const fixture = Fixtures.setup('nothing-allowed', [
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts'
+            ]);
+
+            await expect(Allow.run({})).to.reject('No entry for @example/with-install-script');
+
+            expect(fixture.getActualResult()).to.equal('');
+            expect(fixture.getLog()).to.equal('');
+        });
     });
 });

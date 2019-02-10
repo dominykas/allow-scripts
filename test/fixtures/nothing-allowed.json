@@ -1,14 +1,10 @@
 {
   "private": true,
-  "name": "@example/allowed-semver",
+  "name": "@example/nothing-allowed",
   "version": "0.0.0",
   "dependencies": {
     "@example/with-install-script": "*",
     "@example/with-postinstall-script": "*",
     "@example/without-scripts": "*"
-  },
-  "allowScripts": {
-    "@example/with-install-script": "1.x.x",
-    "@example/with-postinstall-script": "*"
   }
 }
