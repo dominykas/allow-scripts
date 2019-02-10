@@ -12,7 +12,7 @@
   "allowScripts": {
     "@example/with-preinstall-script": "*",
     "@example/with-install-script": "*",
-    "@example/with-postinstall-script": "*"
+    "@example/with-postinstall-script": true
   },
   "scripts": {
     "preinstall": "echo preinstall from basic >> ${OUTPUT}",

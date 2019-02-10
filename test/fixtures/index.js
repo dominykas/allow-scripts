@@ -5,6 +5,7 @@ const Fs = require('fs');
 const Mkdirp = require('mkdirp');
 const Path = require('path');
 const Rimraf = require('rimraf');
+const Sinon = require('sinon');
 
 
 const internals = {
@@ -43,6 +44,16 @@ exports.setup = (main, deps) => {
         process.env.OUTPUT = originalOutput;
     });
 
+    const log = [];
+    const appendLog = (...items) => {
+
+        log.push(items.map((i) => i || '').join(' ').replace(new RegExp(cwd, 'g'), '.'));
+    };
+
+    Sinon.stub(console, 'info').callsFake(appendLog);
+    Sinon.stub(console, 'log').callsFake(appendLog);
+    Sinon.stub(console, 'warn').callsFake(appendLog);
+
     return {
         getExpectedResult: () => {
 
@@ -55,7 +66,7 @@ exports.setup = (main, deps) => {
 
         getLog: () => {
 
-            return console.log.args.map((args) => args[0] || '').join('\n').replace(new RegExp(cwd, 'g'), '.').trim();
+            return log.join('\n').trim();
         }
     };
 };
@@ -64,4 +75,5 @@ exports.restore = () => {
 
     internals.restore.forEach((restore) => restore());
     internals.restore = [];
+    Sinon.restore();
 };

@@ -1,7 +1,6 @@
 'use strict';
 
 const Fixtures = require('./fixtures');
-const Sinon = require('sinon');
 
 
 const Allow = require('..');
@@ -17,15 +16,12 @@ describe('allow-scripts', () => {
         let cwd;
         beforeEach(() => {
 
-            Sinon.stub(console, 'log');
-            Sinon.stub(console, 'info');
             cwd = process.cwd();
         });
 
         afterEach(() => {
 
             Fixtures.restore();
-            Sinon.restore();
             process.chdir(cwd);
         });
 
@@ -56,9 +52,23 @@ describe('allow-scripts', () => {
 
             await expect(Allow.run({})).to.reject('No entry for @example/with-install-script');
 
-            expect(fixture.getActualResult()).not.to.contain('with-postinstall-script');
             expect(fixture.getActualResult()).to.equal('');
             expect(fixture.getLog()).to.equal('');
+        });
+
+        it('skips scripts which are forbidden', async () => {
+
+            const fixture = Fixtures.setup('allowed-false', [
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts'
+            ]);
+
+            await Allow.run({});
+
+            expect(fixture.getActualResult()).not.to.contain('with-install-script');
+            expect(fixture.getActualResult()).to.equal('postinstall from with-postinstall-script');
+            expect(fixture.getLog()).to.contain('skip node_modules/@example/with-install-script (because it is not allowed in package.json)');
         });
     });
 });
