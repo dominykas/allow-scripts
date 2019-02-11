@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "@example/basic",
+  "version": "0.0.0",
+  "dependencies": {
+    "@example/with-preinstall-script": "*",
+    "@example/with-install-script": "*",
+    "@example/with-postinstall-script": "*",
+    "@example/without-scripts": "*",
+    "@example/without-install-scripts": "*"
+  },
+  "allowScripts": {
+    "@example/with-preinstall-script": "*",
+    "@example/with-install-script": "*",
+    "@example/with-postinstall-script": true
+  },
+  "scripts": {
+    "preinstall": "echo preinstall from basic >> ${OUTPUT}",
+    "install": "echo install from basic >> ${OUTPUT}",
+    "postinstall": "echo postinstall from basic >> ${OUTPUT}",
+    "prepublish": "echo prepublish from basic >> ${OUTPUT}",
+    "prepare": "echo prepare from basic >> ${OUTPUT}"
+  }
+}

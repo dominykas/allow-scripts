@@ -1,0 +1,6 @@
+preinstall from with-preinstall-script
+preinstall from basic
+install from with-install-script
+install from basic
+postinstall from with-postinstall-script
+postinstall from basic

@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "@example/without-install-scripts",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "echo ok"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@example/invalid-semver",
+  "version": "0.0.0",
+  "dependencies": {
+    "@example/with-install-script": "*",
+    "@example/with-postinstall-script": "*",
+    "@example/without-scripts": "*"
+  },
+  "allowScripts": {
+    "@example/with-install-script": "not-a-semver-range",
+    "@example/with-postinstall-script": "*"
+  }
+}

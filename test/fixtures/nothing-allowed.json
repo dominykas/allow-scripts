@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "@example/nothing-allowed",
+  "version": "0.0.0",
+  "dependencies": {
+    "@example/with-install-script": "*",
+    "@example/with-postinstall-script": "*",
+    "@example/without-scripts": "*"
+  }
+}

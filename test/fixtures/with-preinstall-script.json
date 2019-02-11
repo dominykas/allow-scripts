@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "@example/with-preinstall-script",
+  "version": "0.0.0",
+  "scripts": {
+    "preinstall": "echo preinstall from with-preinstall-script >> ${OUTPUT}"
+  }
+}

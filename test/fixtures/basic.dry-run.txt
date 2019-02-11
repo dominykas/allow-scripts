@@ -1,0 +1,15 @@
+DRY RUN ==> preinstall @example/basic
+
+DRY RUN ==> preinstall node_modules/@example/with-preinstall-script
+
+DRY RUN ==> install node_modules/@example/with-install-script
+
+DRY RUN ==> postinstall node_modules/@example/with-postinstall-script
+
+DRY RUN ==> install @example/basic
+
+DRY RUN ==> postinstall @example/basic
+
+DRY RUN ==> prepublish @example/basic
+
+DRY RUN ==> prepare @example/basic
