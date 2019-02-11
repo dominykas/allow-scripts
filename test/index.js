@@ -76,8 +76,11 @@ describe('allow-scripts', () => {
             await Allow.run({});
 
             expect(fixture.getActualResult()).to.equal(Fixtures.expectedResults.deep);
-            expect(fixture.getLog()).not.to.contain('without-scripts');
-            expect(fixture.getLog()).not.to.contain('without-install-scripts');
+
+            const log = fixture.getLog();
+            expect(log).not.to.contain('without-scripts');
+            expect(log).not.to.contain('without-install-scripts');
+            expect(log).not.to.contain('install @example/deep');
         });
 
         it('executes allowed scripts (skips cycles)', async () => {

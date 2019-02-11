@@ -6,6 +6,7 @@
     "@example/basic": "*",
     "@example/with-preinstall-script": "*"
   },
+  "scripts": {},
   "allowScripts": {
     "@example/basic": "*",
     "@example/with-preinstall-script": "*",
