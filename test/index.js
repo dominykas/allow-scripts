@@ -1,5 +1,6 @@
 'use strict';
 
+const Cp = require('child_process');
 const Fs = require('fs');
 const Fixtures = require('./fixtures');
 const Path = require('path');
@@ -38,9 +39,11 @@ describe('allow-scripts', () => {
 
             await Allow.run({});
 
-            expect(fixture.getActualResult()).to.equal(Fs.readFileSync(Path.join(__dirname, 'fixtures', 'basic.full.txt')).toString().trim());
+            expect(fixture.getActualResult()).to.equal(Fixtures.expectedResults.basicFull);
             expect(fixture.getLog()).not.to.contain('without-scripts');
             expect(fixture.getLog()).not.to.contain('without-install-scripts');
+
+            expect(Fs.existsSync(Path.join(fixture.cwd, 'npm-shrinkwrap.json'))).to.equal(false);
         });
 
         it('dry run: reports allowed scripts', async () => {
@@ -56,7 +59,7 @@ describe('allow-scripts', () => {
             await Allow.run({ dryRun: true });
 
             expect(fixture.getActualResult()).to.equal('');
-            expect(fixture.getLog()).to.equal(Fs.readFileSync(Path.join(__dirname, 'fixtures', 'basic.dry-run.txt')).toString().trim());
+            expect(fixture.getLog()).to.equal(Fixtures.expectedResults.basicDryRun);
         });
 
         it('executes allowed scripts (subdeps)', async () => {
@@ -72,7 +75,7 @@ describe('allow-scripts', () => {
 
             await Allow.run({});
 
-            expect(fixture.getActualResult()).to.equal(Fs.readFileSync(Path.join(__dirname, 'fixtures', 'deep.txt')).toString().trim());
+            expect(fixture.getActualResult()).to.equal(Fixtures.expectedResults.deep);
             expect(fixture.getLog()).not.to.contain('without-scripts');
             expect(fixture.getLog()).not.to.contain('without-install-scripts');
         });
@@ -90,6 +93,46 @@ describe('allow-scripts', () => {
             expect(fixture.getActualResult()).to.equal('install from with-install-script');
             expect(fixture.getLog()).to.contain('skip node_modules/@example/cycle-a (because it has a cycle in dependencies)');
             expect(fixture.getLog()).to.contain('skip node_modules/@example/cycle-b (because it has a cycle in dependencies)');
+        });
+
+        it('executes allowed scripts (existing shrinkwrap)', async () => {
+
+            const fixture = Fixtures.setup('basic', [
+                'with-preinstall-script',
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts',
+                'without-install-scripts'
+            ]);
+
+            Cp.execSync('npm shrinkwrap', { cwd: fixture.cwd });
+
+            await Allow.run({});
+
+            expect(fixture.getActualResult()).to.equal(Fixtures.expectedResults.basicFull);
+
+            expect(Fs.existsSync(Path.join(fixture.cwd, 'npm-shrinkwrap.json'))).to.equal(true);
+        });
+
+        it('executes allowed scripts (existing package-lock)', async () => {
+
+            const fixture = Fixtures.setup('basic', [
+                'with-preinstall-script',
+                'with-install-script',
+                'with-postinstall-script',
+                'without-scripts',
+                'without-install-scripts'
+            ]);
+
+            Cp.execSync('npm shrinkwrap', { cwd: fixture.cwd });
+            Cp.execSync('mv npm-shrinkwrap.json package-lock.json', { cwd: fixture.cwd });
+
+            await Allow.run({});
+
+            expect(fixture.getActualResult()).to.equal(Fixtures.expectedResults.basicFull);
+
+            expect(Fs.existsSync(Path.join(fixture.cwd, 'package-lock.json'))).to.equal(true);
+            expect(Fs.existsSync(Path.join(fixture.cwd, 'npm-shrinkwrap.json'))).to.equal(false);
         });
 
         it('crashes on script not in allowed list', async () => {

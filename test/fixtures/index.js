@@ -13,6 +13,16 @@ const internals = {
 };
 
 
+internals.readFile = (path) => Fs.readFileSync(path).toString().trim();
+
+
+exports.expectedResults = {
+    basicFull: internals.readFile(Path.join(__dirname, 'basic.full.txt')),
+    basicDryRun: internals.readFile(Path.join(__dirname, 'basic.dry-run.txt')),
+    deep: internals.readFile(Path.join(__dirname, 'deep.txt'))
+};
+
+
 exports.setup = (main, deps) => {
 
     const cwd = Path.join(__dirname, '..', 'tmp');
@@ -67,15 +77,9 @@ exports.setup = (main, deps) => {
     Sinon.stub(process.stderr, 'write').callsFake((data) => appendLog(data.toString()));
 
     return {
-        getActualResult: () => {
-
-            return Fs.readFileSync(output).toString().trim();
-        },
-
-        getLog: () => {
-
-            return log.join('\n').trim();
-        }
+        cwd,
+        getActualResult: () => internals.readFile(output),
+        getLog: () => log.join('\n').trim()
     };
 };
 
