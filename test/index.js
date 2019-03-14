@@ -146,7 +146,7 @@ describe('allow-scripts', () => {
                 'without-scripts'
             ]);
 
-            await expect(Allow.run({})).to.reject('No entry for @example/with-install-script');
+            await expect(Allow.run({})).to.reject('Mis-configured allowedScripts: @example/with-install-script (no entry)');
 
             expect(fixture.getActualResult()).to.equal('');
             expect(fixture.getLog()).to.equal('');
@@ -190,7 +190,7 @@ describe('allow-scripts', () => {
                 'without-scripts'
             ]);
 
-            await expect(Allow.run({})).to.reject('Invalid version range in allowScripts[@example/with-install-script]: not-a-semver-range');
+            await expect(Allow.run({})).to.reject('Mis-configured allowedScripts: @example/with-install-script (invalid semver range: not-a-semver-range)');
 
             expect(fixture.getActualResult()).to.equal('');
             expect(fixture.getLog()).to.equal('');
@@ -204,7 +204,7 @@ describe('allow-scripts', () => {
                 'without-scripts'
             ]);
 
-            await expect(Allow.run({})).to.reject('No entry for @example/with-install-script');
+            await expect(Allow.run({})).to.reject('Mis-configured allowedScripts: @example/with-install-script (no entry), @example/with-postinstall-script (no entry)');
 
             expect(fixture.getActualResult()).to.equal('');
             expect(fixture.getLog()).to.equal('');

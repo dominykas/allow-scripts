@@ -16,6 +16,7 @@
   "author": "Dominykas Blyžė <hello@dominykas.com>",
   "license": "MIT",
   "dependencies": {
+    "ansicolors": "0.3.x",
     "libnpm": "2.x.x",
     "semver": "5.x.x",
     "topo": "3.x.x"

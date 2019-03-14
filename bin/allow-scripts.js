@@ -2,6 +2,8 @@
 
 'use strict';
 
+const Ansicolors = require('ansicolors');
+
 const Allow = require('..');
 
 const options = {
@@ -10,6 +12,13 @@ const options = {
 
 Allow.run(options).catch((err) => {
 
-    console.error(err);
+    let log = err;
+    if (err.stack) {
+
+        const [message, ...rest] = err.stack.split('\n');
+        log = `${Ansicolors.red(message)}\n${rest.join('\n')}`;
+    }
+
+    console.error(`\n\n${log}`);
     process.exit(1);
 });
