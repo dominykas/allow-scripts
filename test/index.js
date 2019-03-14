@@ -190,7 +190,7 @@ describe('allow-scripts', () => {
                 'without-scripts'
             ]);
 
-            await expect(Allow.run({})).to.reject('Mis-configured allowedScripts: @example/with-install-script (invalid semver range)');
+            await expect(Allow.run({})).to.reject('Mis-configured allowedScripts: @example/with-install-script (invalid semver range: not-a-semver-range)');
 
             expect(fixture.getActualResult()).to.equal('');
             expect(fixture.getLog()).to.equal('');
