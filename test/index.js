@@ -88,6 +88,7 @@ describe('allow-scripts', () => {
             const fixture = Fixtures.setup('with-cycles', [
                 'cycle-a',
                 'cycle-b',
+                'cycle-c',
                 'with-install-script'
             ]);
 

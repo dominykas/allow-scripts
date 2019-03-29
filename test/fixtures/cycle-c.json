@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@example/cycle-b",
+  "name": "@example/cycle-c",
   "version": "0.0.0",
   "dependencies": {
-    "@example/cycle-c": "*"
+    "@example/cycle-a": "*"
   }
 }
