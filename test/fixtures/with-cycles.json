@@ -8,6 +8,9 @@
     "@example/with-install-script": "*"
   },
   "allowScripts": {
-    "@example/with-install-script": "*"
+    "@example/with-install-script": "*",
+    "@example/cycle-a": "*",
+    "@example/cycle-b": "*",
+    "@example/cycle-c": "*"
   }
 }

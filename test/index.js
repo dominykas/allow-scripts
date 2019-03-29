@@ -94,9 +94,7 @@ describe('allow-scripts', () => {
 
             await Allow.run({});
 
-            expect(fixture.getActualResult()).to.equal('install from with-install-script');
-            expect(fixture.getLog()).to.contain('skip node_modules/@example/cycle-a (because it has a cycle in dependencies)');
-            expect(fixture.getLog()).to.contain('skip node_modules/@example/cycle-b (because it has a cycle in dependencies)');
+            expect(fixture.getActualResult()).to.equal(Fixtures.expectedResults.withCycles);
         });
 
         it('executes allowed scripts (existing shrinkwrap)', async () => {

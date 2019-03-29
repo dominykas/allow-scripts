@@ -1,0 +1,4 @@
+install from cycle-c
+install from cycle-b
+install from cycle-a
+install from with-install-script

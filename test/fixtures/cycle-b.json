@@ -4,5 +4,8 @@
   "version": "0.0.0",
   "dependencies": {
     "@example/cycle-c": "*"
+  },
+  "scripts": {
+    "install": "echo install from cycle-b >> ${OUTPUT}"
   }
 }
