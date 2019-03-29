@@ -3,6 +3,9 @@
   "name": "@example/cycle-b",
   "version": "0.0.0",
   "dependencies": {
-    "@example/cycle-a": "*"
+    "@example/cycle-c": "*"
+  },
+  "scripts": {
+    "install": "echo install from cycle-b >> ${OUTPUT}"
   }
 }

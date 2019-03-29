@@ -19,7 +19,8 @@ internals.readFile = (path) => Fs.readFileSync(path).toString().trim();
 exports.expectedResults = {
     basicFull: internals.readFile(Path.join(__dirname, 'basic.full.txt')),
     basicDryRun: internals.readFile(Path.join(__dirname, 'basic.dry-run.txt')),
-    deep: internals.readFile(Path.join(__dirname, 'deep.txt'))
+    deep: internals.readFile(Path.join(__dirname, 'deep.txt')),
+    withCycles: internals.readFile(Path.join(__dirname, 'with-cycles.txt'))
 };
 
 

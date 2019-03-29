@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "@example/cycle-c",
+  "version": "0.0.0",
+  "dependencies": {
+    "@example/cycle-a": "*"
+  },
+  "scripts": {
+    "install": "echo install from cycle-c >> ${OUTPUT}"
+  }
+}

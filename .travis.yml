@@ -5,6 +5,10 @@ node_js:
   - "10"
   - "node"
 
+install:
+  - "npm install --ignore-scripts"
+  - "node bin/allow-scripts.js"
+
 jobs:
   include:
     - stage: release
