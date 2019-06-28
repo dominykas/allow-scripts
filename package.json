@@ -39,10 +39,5 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "release": {
-    "npmPublish": false,
-    "tarballDir": ".",
-    "assets": "allow-scripts-*.tgz"
   }
 }
