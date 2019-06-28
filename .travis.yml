@@ -13,7 +13,7 @@ install:
 jobs:
   include:
     - stage: release
-      if: branch = master
+      if: branch = master AND type = push
       node_js: "10"
       deploy:
         provider: "script"
