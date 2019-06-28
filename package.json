@@ -21,12 +21,14 @@
     "semver": "6.x.x"
   },
   "devDependencies": {
-    "@commitlint/cli": "7.x.x",
-    "@commitlint/config-conventional": "7.x.x",
-    "code": "5.x.x",
-    "lab": "18.x.x",
+    "@commitlint/cli": "8.x.x",
+    "@commitlint/config-conventional": "8.x.x",
+    "@hapi/code": "^5.3.1",
+    "@hapi/lab": "^19.1.0",
+    "@semantic-release/npm": "git+https://github.com/dominykas/semantic-release-npm.git#otp-url-with-version",
     "mkdirp": "0.5.x",
     "rimraf": "2.x.x",
+    "semantic-release": "15.x.x",
     "sinon": "7.x.x"
   },
   "files": [
@@ -38,9 +40,7 @@
       "@commitlint/config-conventional"
     ]
   },
-  "release": {
-    "npmPublish": false,
-    "tarballDir": ".",
-    "assets": "allow-scripts-*.tgz"
+  "allowScripts": {
+    "core-js": false
   }
 }

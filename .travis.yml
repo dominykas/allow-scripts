@@ -3,6 +3,7 @@ sudo: false
 node_js:
   - "8"
   - "10"
+  - "12"
   - "node"
 
 install:
@@ -12,6 +13,7 @@ install:
 jobs:
   include:
     - stage: release
+      if: branch = master AND type = push
       node_js: "10"
       deploy:
         provider: "script"
