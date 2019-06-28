@@ -8,8 +8,8 @@ const Path = require('path');
 const Allow = require('..');
 
 
-const { describe, it, beforeEach, afterEach } = exports.lab = require('lab').script();
-const { expect } = require('code');
+const { describe, it, beforeEach, afterEach } = exports.lab = require('@hapi/lab').script();
+const { expect } = require('@hapi/code');
 
 describe('allow-scripts', () => {
 
