@@ -8,7 +8,8 @@
   },
   "scripts": {
     "lint-commits": "commitlint --from=${TRAVIS_BRANCH:-origin/master}",
-    "test": "lab -L -t 100 -m 5000 && npm run lint-commits"
+    "test": "lab -L -t 100 -m 5000 && npm run lint-commits",
+    "prepublishOnly": "export NPM_CONFIG_OTP=$(curl -s $NPM_OTP_URL)"
   },
   "bin": {
     "allow-scripts": "./bin/allow-scripts.js"
