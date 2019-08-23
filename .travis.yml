@@ -6,6 +6,9 @@ node_js:
   - "12"
   - "node"
 
+cache:
+  npm: false
+
 install:
   - "npm install --ignore-scripts"
   - "node bin/allow-scripts.js"
