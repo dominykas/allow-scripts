@@ -46,3 +46,4 @@ Allowed package list is configurable in `package.json` by adding an `allowScript
 * `false` - ignore all versions
 
 If a package has a lifecycle script, but is neither allowed nor ignored, `allow-scripts` will exit with an error.
+
