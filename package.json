@@ -17,17 +17,16 @@
   "license": "MIT",
   "dependencies": {
     "ansicolors": "0.3.x",
-    "libnpm": "2.x.x",
+    "libnpm": "3.x.x",
     "semver": "6.x.x"
   },
   "devDependencies": {
     "@commitlint/cli": "8.x.x",
     "@commitlint/config-conventional": "8.x.x",
-    "@hapi/code": "^5.3.1",
-    "@hapi/lab": "^19.1.0",
-    "@semantic-release/npm": "git+https://github.com/dominykas/semantic-release-npm.git#otp-url-with-version",
+    "@hapi/code": "6.x.x",
+    "@hapi/lab": "20.x.x",
     "mkdirp": "0.5.x",
-    "rimraf": "2.x.x",
+    "rimraf": "3.x.x",
     "semantic-release": "15.x.x",
     "sinon": "7.x.x"
   },
