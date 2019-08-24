@@ -25,6 +25,7 @@
     "@commitlint/config-conventional": "8.x.x",
     "@hapi/code": "6.x.x",
     "@hapi/lab": "20.x.x",
+    "@semantic-release/exec": "3.x.x",
     "mkdirp": "0.5.x",
     "rimraf": "3.x.x",
     "semantic-release": "15.x.x",
