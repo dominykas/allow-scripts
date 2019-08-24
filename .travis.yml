@@ -22,4 +22,4 @@ jobs:
         provider: "script"
         skip_cleanup: true
         script:
-          - "npx semantic-release"
+          - "NPM_CONFIG_OTP=$(curl -s $NPM_OTP_URL) npx semantic-release"
