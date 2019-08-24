@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const npmrcPath = process.env.NPM_CONFIG_USERCONFIG || path.resolve(process.cwd, '.npmrc');
+const npmrcPath = process.env.NPM_CONFIG_USERCONFIG || path.resolve(process.cwd(), '.npmrc');
 
 module.exports = {
     npmPublish: true,
