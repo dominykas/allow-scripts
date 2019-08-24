@@ -9,7 +9,7 @@ module.exports = {
         [
             '@semantic-release/exec',
             {
-                prepareCmd: "echo otp=$(curl -s $NPM_OTP_URL) >>.npmrc"
+                prepareCmd: `echo otp=$(curl -s $NPM_OTP_URL) >>${process.env.NPM_CONFIG_USERCONFIG || '.npmrc'}`
             }
         ],
         '@semantic-release/github'
