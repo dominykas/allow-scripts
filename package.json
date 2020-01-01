@@ -18,7 +18,7 @@
   "dependencies": {
     "ansicolors": "0.3.x",
     "libnpm": "3.x.x",
-    "semver": "6.x.x"
+    "semver": "7.x"
   },
   "devDependencies": {
     "@commitlint/cli": "8.x.x",
