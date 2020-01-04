@@ -23,7 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "8.x.x",
     "@commitlint/config-conventional": "8.x.x",
-    "@hapi/code": "7.x",
+    "@hapi/code": "8.x",
     "@hapi/lab": "22.x",
     "mkdirp": "0.5.x",
     "rimraf": "3.x.x",
