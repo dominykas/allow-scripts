@@ -21,8 +21,8 @@
     "semver": "7.x"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.x.x",
-    "@commitlint/config-conventional": "8.x.x",
+    "@commitlint/cli": "9.x",
+    "@commitlint/config-conventional": "9.x",
     "@hapi/code": "8.x",
     "@hapi/lab": "22.x",
     "mkdirp": "0.5.x",
