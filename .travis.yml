@@ -1,10 +1,9 @@
 language: node_js
-sudo: false
 node_js:
   - "8"
   - "10"
   - "12"
-  - "node"
+  - "14"
 
 cache:
   npm: false
@@ -12,14 +11,3 @@ cache:
 install:
   - "npm install --ignore-scripts"
   - "node bin/allow-scripts.js"
-
-jobs:
-  include:
-    - stage: release
-      if: branch = master AND type = push
-      node_js: "10"
-      deploy:
-        provider: "script"
-        skip_cleanup: true
-        script:
-          - "NPM_CONFIG_OTP=$(curl -L -s $NPM_OTP_URL) npx semantic-release"
