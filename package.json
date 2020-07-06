@@ -7,8 +7,7 @@
     "url": "https://github.com/dominykas/allow-scripts.git"
   },
   "scripts": {
-    "lint-commits": "commitlint --from=${TRAVIS_BRANCH:-origin/master}",
-    "test": "lab -L -t 100 -m 5000 && npm run lint-commits"
+    "test": "lab -L -t 100 -m 5000"
   },
   "bin": {
     "allow-scripts": "./bin/allow-scripts.js"
@@ -17,28 +16,20 @@
   "license": "MIT",
   "dependencies": {
     "ansicolors": "0.3.x",
-    "libnpm": "3.x.x",
+    "libnpm": "3.x",
     "semver": "7.x"
   },
   "devDependencies": {
-    "@commitlint/cli": "9.x",
-    "@commitlint/config-conventional": "9.x",
     "@hapi/code": "8.x",
     "@hapi/lab": "22.x",
-    "mkdirp": "0.5.x",
-    "rimraf": "3.x.x",
-    "semantic-release": "17.x",
-    "sinon": "8.x"
+    "mkdirp": "1.x",
+    "rimraf": "3.x",
+    "sinon": "9.x"
   },
   "files": [
     "bin",
     "lib"
   ],
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "allowScripts": {
     "core-js": false
   }
