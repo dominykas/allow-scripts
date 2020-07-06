@@ -27,7 +27,7 @@
     "@hapi/lab": "22.x",
     "mkdirp": "0.5.x",
     "rimraf": "3.x.x",
-    "semantic-release": "15.x.x",
+    "semantic-release": "17.x",
     "sinon": "8.x"
   },
   "files": [
