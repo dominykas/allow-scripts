@@ -28,7 +28,7 @@
     "mkdirp": "0.5.x",
     "rimraf": "3.x.x",
     "semantic-release": "17.x",
-    "sinon": "8.x"
+    "sinon": "9.x"
   },
   "files": [
     "bin",
