@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@hapi/code": "8.x",
-    "@hapi/lab": "23.x",
+    "@hapi/lab": "24.x",
     "mkdirp": "1.x",
     "rimraf": "3.x",
     "sinon": "9.x"
