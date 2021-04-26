@@ -24,7 +24,7 @@
     "@hapi/lab": "24.x",
     "mkdirp": "1.x",
     "rimraf": "3.x",
-    "sinon": "9.x"
+    "sinon": "10.x"
   },
   "files": [
     "bin",
