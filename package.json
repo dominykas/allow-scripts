@@ -20,8 +20,8 @@
     "semver": "7.x"
   },
   "devDependencies": {
-    "@hapi/code": "8.x",
-    "@hapi/lab": "24.x",
+    "@hapi/code": "9.x",
+    "@hapi/lab": "25.x",
     "mkdirp": "1.x",
     "rimraf": "3.x",
     "sinon": "11.x"
