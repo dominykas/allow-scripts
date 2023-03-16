@@ -23,7 +23,7 @@
     "@hapi/code": "8.x",
     "@hapi/lab": "24.x",
     "mkdirp": "1.x",
-    "rimraf": "3.x",
+    "rimraf": "4.x",
     "sinon": "11.x"
   },
   "files": [
